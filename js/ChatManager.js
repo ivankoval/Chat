@@ -21,9 +21,8 @@ var ChatManager = function() {
     };
 
     this.send = function() {
-        var message = $("input").val();
+        var message = $("#input").val();
         if(message.length != 0) {
-            console.log(message);
             var Chat = Parse.Object.extend('CardioMoodChat');
             var chat = new Chat();
             chat.set("message", message);
@@ -33,7 +32,6 @@ var ChatManager = function() {
             chat.save(null, {
                 success: function(chat) {
                     console.log('saved' + chat);
-                    //self.lastMessageTime = chat.createdAt;
                 },
                 error: function(chat, error) {
                     console.log('error' + error);
@@ -62,9 +60,9 @@ var ChatManager = function() {
                for(var i = 0; i < result.length; i++) {
                    var object = result[i];
                     if(object.get("fromId") == self.currentUserId) {
-                        $('#chat').append("<li>I: " + object.get('message') + "</li>")
+                        $('#chat').append(' <div class="chatbox-user"> <a href="javascript:;" class="chat-avatar pull-left"> <img src="img/faceless.jpg" class="img-circle" title="user name" alt=""> </a> <div class="message"> <div class="panel"> <div class="panel-body"> <p>' + object.get('message') + '</p> </div> </div> <small class="chat-time"> <i class="ti-time mr5"></i> <b>' + moment(object.createdAt).fromNow() + '</b> <i class="ti-check text-success"></i> </small> </div> </div>');
                     } else {
-                        $('#chat').append("<li>Person: " + object.get('message') + "</li>")
+                        $('#chat').append(' <div class="chatbox-user right"> <a href="javascript:;" class="chat-avatar pull-right"> <img src="img/faceless.jpg" class="img-circle" title="user name" alt=""> </a> <div class="message"> <div class="panel"> <div class="panel-body"> <p>' + object.get('message') + '</p> </div> </div> <small class="chat-time"> <i class="ti-time mr5"></i> <b>' + moment(object.createdAt).fromNow() + '</b> <i class="ti-check text-success"></i> </small> </div> </div>');
                     }
                     self.lastMessageTime = object.createdAt;
                }
