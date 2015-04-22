@@ -1,0 +1,17 @@
+<div class="chatbox-user" ng-class="{right : message.type == 'received'}">
+    <a href="javascript:;" class="chat-avatar pull-left">
+        <img src="img/faceless.jpg" class="img-circle" title="user name" alt="">
+    </a>
+    <div class="message">
+        <div class="panel">
+            <div class="panel-body">
+                <p>{{message.text}}</p>
+            </div>
+        </div>
+        <small class="chat-time">
+            <i class="ti-time mr5"></i>
+            <b>10 minutes ago</b>
+            <i class="ti-check text-success"></i>
+        </small>
+    </div>
+</div>

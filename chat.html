@@ -42,8 +42,8 @@
 
 <!-- body -->
 
-<body ng-app="Chat"  ng-controller="AppController">
-<div class="app">
+<body ng-app="Chat"  ng-controller="AppCtrl">
+<div class="app" ng-controller="ChatCtrl">
     <!-- top header -->
     <header class="header header-fixed navbar">
 
@@ -739,8 +739,8 @@
 
                 <!-- inner content wrapper -->
                 <div  class="wrapper">
-                    <div id="chat" class="chat-box">
-
+                    <div id="chat" class="chat-box" ng-repeat="message in messages">
+                        <app-message message="message"></app-message>
                     </div>
                 </div>
                 <!-- /inner content wrapper -->
@@ -751,9 +751,9 @@
             <footer class="bt">
                 <div class="form-input clearfix mt10 mb10">
                     <div class="input-group">
-                        <input id="input" type="text" class="form-control input-sm" placeholder="Say Something ...">
+                        <input id="input" type="text" class="form-control input-sm" placeholder="Say Something ..." ng-model="sendMessage">
                             <span class="input-group-btn">
-                                <button id="sendBtn" class="btn btn-default btn-sm" type="button"><i class="ti-arrow-right"></i></button>
+                                <button id="sendBtn" class="btn btn-default btn-sm" type="button" ng-click="send()"><i class="ti-arrow-right"></i></button>
                             </span>
                     </div>
                 </div>
@@ -797,7 +797,7 @@
                             </div>
                         </div>
 
-                        <app-group group="group" ng-repeat="group in $root.usersList"></app-group>
+                        <app-group group="group" ng-repeat="group in $root.chatList"></app-group>
 
                     </div>
                 </div>
