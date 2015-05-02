@@ -1,6 +1,9 @@
 <div class="pt15 pl15 pr15 pb0">
     <div class="h6 text-muted"><b>{{group.groupName}}</b>
     </div>
+    <div class="h6 text-muted"><b>{{group.lastMessageTime}}</b>
+    </div>
+
 </div>
 
-<app-user user="user" ng-repeat="user in group.users"></app-user>
+<app-user user="user" ng-repeat="user in group.users| orderBy:'-lastMessageTime'"></app-user>

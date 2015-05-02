@@ -10,7 +10,8 @@
         </div>
         <small class="chat-time">
             <i class="ti-time mr5"></i>
-            <b>10 minutes ago</b>
+            <b>{{message.createdAgo}}</b>
+            {{message.type == 'sent' ? ($root.messagesIsRead[message.id] ? 'Read' : 'Delivered') : ''}}
             <i class="ti-check text-success"></i>
         </small>
     </div>

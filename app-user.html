@@ -1,10 +1,11 @@
-<div class="chat-user" ng-click="setSpeaker(user)">
+<div class="chat-user" ng-click="setSpeaker(user.id)" ng-class="{current_speaker : user.id == $root.currentSpeaker}">
     <div href="javascript:;" class="user-avatar">
         <img src="img/faceless.jpg" class="img-circle" alt="">
         <div class="status bg-success"></div>
     </div>
     <div class="user-details">
         <p>{{username}}</p>
-        <!--<small class="user-department">Human Resources</small>-->
+        <!--<small class="user-department">{{user.lastMessageTime}}</small>-->
+        <small class="user-department">{{$root.unreadByUser[user.id] ? $root.unreadByUser[user.id] + ' unread message(s)' : ''}}</small>
     </div>
 </div>
